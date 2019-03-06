@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+    <head>
+        <title th:text="${book.title}">Default Title</title>
+    </head>
+    <body>
+        <header>
+            <section>
+                <h1 th:text="${book.title}">Default Title</h1>
+                <h2 th:text="${book.author}">Default Author</h2>
+            </section>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/books">Books</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <small th:text="${book.genre}">Default Genre</small>
+            <p>More book info coming soon...</p>
+        </main>
+        <footer>
+            <small>&copy; Literate Octo Dollop 2019</small>
+        </footer>
+    </body>
+</html>

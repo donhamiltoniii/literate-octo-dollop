@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+    <head>
+        <title>Literate Octo Dollop: Books</title>
+    </head>
+    <body>
+        <header>
+            <section>
+                <h1>Literate Octo Dollop</h1>
+                <h2>Books</h2>
+            </section>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/books">Books</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <ul>
+                <li th:each="book : ${books}">
+                    <h3><a th:href="@{|/books/${book.id}|}" th:text="${book.title}">Default Title</a></h3>
+                    <h4 th:text="|By: ${book.author}|">Default Author</h4>
+                    <small th:text="${book.genre}">Default Genre</small>
+                </li>
+            </ul>
+            <form action="/books/add" method="POST">
+                <label>Title: <input type="text" name="title" /></label>
+                <label>Author: <input type="text" name="author" /></label>
+                <label>Genre: <input type="text" name="genre" /></label>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+        <footer>
+            <small>&copy; Literate Octo Dollop 2019</small>
+        </footer>
+    </body>
+</html>
