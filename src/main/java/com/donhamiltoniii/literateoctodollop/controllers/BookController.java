@@ -11,12 +11,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.donhamiltoniii.literateoctodollop.models.Author;
 import com.donhamiltoniii.literateoctodollop.models.Book;
+import com.donhamiltoniii.literateoctodollop.repositories.AuthorRepository;
 import com.donhamiltoniii.literateoctodollop.repositories.BookRepository;
 
 @Controller
 @RequestMapping("/books")
 public class BookController {
+
+	@Resource
+	AuthorRepository authorRepo;
 
 	@Resource
 	BookRepository bookRepo;
@@ -39,8 +44,15 @@ public class BookController {
 	}
 
 	@PostMapping("/add")
-	public String addBook(String title, String author, String genre) {
+	public String addBook(String title, String authorName, String genre) {
+		String[] authorNames = authorName.split(" ");
+		String firstName = authorNames[0];
+		String lastName = authorNames[1];
+
+		Author author = authorRepo.findByFirstNameAndLastName(firstName, lastName);
+
 		bookRepo.save(new Book(title, author, genre));
+
 		return "redirect:/books";
 	}
 }

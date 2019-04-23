@@ -20,13 +20,13 @@
             <ul>
                 <li th:each="book : ${books}">
                     <h3><a th:href="@{|/books/${book.id}|}" th:text="${book.title}">Default Title</a></h3>
-                    <h4 th:text="|By: ${book.author}|">Default Author</h4>
+                    <h4><a th:href="|/authors/${book.author.id}|" th:text="|By: ${book.author.firstName} ${book.author.lastName}|">Default Author</a></h4>
                     <small th:text="${book.genre}">Default Genre</small>
                 </li>
             </ul>
             <form action="/books/add" method="POST">
                 <label>Title: <input type="text" name="title" /></label>
-                <label>Author: <input type="text" name="author" /></label>
+                <label>Author: <input type="text" name="authorName" /></label>
                 <label>Genre: <input type="text" name="genre" /></label>
                 <button type="submit">Submit</button>
             </form>

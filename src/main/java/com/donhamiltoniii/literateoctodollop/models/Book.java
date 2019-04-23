@@ -3,6 +3,7 @@ package com.donhamiltoniii.literateoctodollop.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -11,14 +12,16 @@ public class Book {
 	@GeneratedValue
 	private Long id;
 	private String title;
-	private String author;
+
+	@ManyToOne
+	private Author author;
 	private String genre;
 
 	// This is a hook for JPA - We will never call this Constructor
 	public Book() {
 	}
 
-	public Book(String title, String author, String genre) {
+	public Book(String title, Author author, String genre) {
 		this.title = title;
 		this.author = author;
 		this.genre = genre;
@@ -32,7 +35,7 @@ public class Book {
 		return title;
 	}
 
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
 

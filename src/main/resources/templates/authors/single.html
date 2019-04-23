@@ -1,0 +1,29 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<title th:text="|${author.firstName} ${author.lastName}|">Default
+	Name</title>
+</head>
+<body>
+	<header>
+		<h1 th:text="|${author.firstName} ${author.lastName}|">Default Name</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/books">Books</a></li>
+				<li><a href="/authors">Authors</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<ul>
+			<li th:each="book : ${author.books}">
+				<a th:href="|/books/${book.id}|" th:text="${book.title}">Title</a>
+			</li>
+		</ul>
+	</main>
+	<footer>
+		<small>&copy; Literate Octo Dollop 2019</small>
+	</footer>
+</body>
+</html>
