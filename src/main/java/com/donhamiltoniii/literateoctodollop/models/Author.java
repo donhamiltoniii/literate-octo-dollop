@@ -5,7 +5,7 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Author {
@@ -17,7 +17,7 @@ public class Author {
 	private String firstName;
 	private String lastName;
 
-	@OneToMany(mappedBy = "author")
+	@ManyToMany(mappedBy = "authors")
 	private Collection<Book> books;
 
 	public Author() {

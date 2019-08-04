@@ -7,7 +7,7 @@
         <header>
             <section>
                 <h1 th:text="${book.title}">Default Title</h1>
-                <h2><a th:href="|/authors/${book.author.id}|" th:text="|${book.author.firstName} ${book.author.lastName}|">Default Author</a></h2>
+                <h2 th:each="author : ${book.authors}"><a th:href="|/authors/${author.id}|" th:text="|${author.firstName} ${author.lastName}|">Default Author</a></h2>
             </section>
             <nav>
                 <ul>

@@ -48,7 +48,7 @@ public class BookController {
 	public String addBook(String title, Long authorId, String genre) {
 		Author author = authorRepo.findById(authorId).get();
 
-		bookRepo.save(new Book(title, author, genre));
+		bookRepo.save(new Book(title, genre, author));
 
 		return "redirect:/books";
 	}

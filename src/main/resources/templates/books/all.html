@@ -21,7 +21,8 @@
             <ul>
                 <li th:each="book : ${books}">
                     <h3><a th:href="@{|/books/${book.id}|}" th:text="${book.title}">Default Title</a></h3>
-                    <h4><a th:href="|/authors/${book.author.id}|" th:text="|By: ${book.author.firstName} ${book.author.lastName}|">Default Author</a></h4>
+                    <p>by:</p>
+                    <h4 th:each="author : ${book.authors}"><a th:href="|/authors/${author.id}|" th:text="|${author.firstName} ${author.lastName}|">Default Author</a></h4>
                     <small th:text="${book.genre}">Default Genre</small>
                 </li>
             </ul>
