@@ -29,6 +29,7 @@ public class BookController {
 	@GetMapping({ "", "/", "/index" })
 	public String getAllBooks(Model model) {
 		model.addAttribute("books", bookRepo.findAll());
+		model.addAttribute("authors", authorRepo.findAll());
 		return "books/all";
 	}
 
@@ -43,13 +44,9 @@ public class BookController {
 		return "books/single";
 	}
 
-	@PostMapping("/add")
-	public String addBook(String title, String authorName, String genre) {
-		String[] authorNames = authorName.split(" ");
-		String firstName = authorNames[0];
-		String lastName = authorNames[1];
-
-		Author author = authorRepo.findByFirstNameAndLastName(firstName, lastName);
+	@PostMapping({ "", "/", "/index" })
+	public String addBook(String title, Long authorId, String genre) {
+		Author author = authorRepo.findById(authorId).get();
 
 		bookRepo.save(new Book(title, author, genre));
 

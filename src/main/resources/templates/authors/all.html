@@ -23,7 +23,7 @@
                     <h3><a th:href="@{|/authors/${author.id}|}" th:text="|${author.firstName} ${author.lastName}">Default Name</a></h3>
                 </li>
             </ul>
-            <form action="/authors/add" method="POST">
+            <form action="/authors" method="POST">
                 <label>First Name: <input type="text" name="firstName" /></label>
                 <label>Last Name: <input type="text" name="lastName" /></label>
                 <button type="submit">Submit</button>

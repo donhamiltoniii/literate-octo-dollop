@@ -13,6 +13,7 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/books">Books</a></li>
+                    <li><a href="/authors">Authors</a></li>
                 </ul>
             </nav>
         </header>
@@ -24,9 +25,14 @@
                     <small th:text="${book.genre}">Default Genre</small>
                 </li>
             </ul>
-            <form action="/books/add" method="POST">
+            <form action="/books" method="POST">
                 <label>Title: <input type="text" name="title" /></label>
-                <label>Author: <input type="text" name="authorName" /></label>
+                <label>
+				  Author: 
+				  <select name="authorId">
+				    <option th:each="author : ${authors}" th:value="${author.id}" th:text="|${author.firstName} ${author.lastName}|">Author</option>
+				  </select>
+				</label>
                 <label>Genre: <input type="text" name="genre" /></label>
                 <button type="submit">Submit</button>
             </form>

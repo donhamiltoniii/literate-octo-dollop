@@ -25,7 +25,7 @@ public class Initializer implements CommandLineRunner {
 		Author craigWalls = authorRepo.save(new Author("Craig", "Walls"));
 		Author elisabethRobson = authorRepo.save(new Author("Elisabeth", "Robson"));
 
-		bookRepo.save(new Book("J2EE Development withou EJB", rodJohnson, "Tech"));
+		bookRepo.save(new Book("J2EE Development without EJB", rodJohnson, "Tech"));
 		bookRepo.save(new Book("Spring Boot In Action", craigWalls, "Tech"));
 		bookRepo.save(new Book("Head First Design Patterns", elisabethRobson, "Tech"));
 	}

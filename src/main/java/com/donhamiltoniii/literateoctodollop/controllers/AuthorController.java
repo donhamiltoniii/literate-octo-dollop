@@ -38,7 +38,7 @@ public class AuthorController {
 		return "authors/single";
 	}
 
-	@PostMapping("/add")
+	@PostMapping({ "", "/", "/index" })
 	public String addAuthor(String firstName, String lastName) {
 		authorRepo.save(new Author(firstName, lastName));
 
